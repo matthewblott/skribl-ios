@@ -1,0 +1,32 @@
+{
+  "settings": {
+  },
+  "rules": [
+    {
+      "patterns": [
+        ".*"
+      ],
+      "properties": {
+        "context": "default",
+        "pull_to_refresh_enabled": true
+      }
+    },
+    {
+      "patterns": [
+        "/\\d+/notes$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
+        "/\\d+/notes/new$"
+      ],
+      "properties": {
+        "presentation": "replace_root",
+        "pull_to_refresh_enabled": false
+      }
+    }
+  ]
+}
