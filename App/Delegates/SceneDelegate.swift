@@ -17,12 +17,14 @@ final class SceneDelegate: UIResponder {
   )
 }
 
-// Add methods to switch between controllers
 extension SceneDelegate {
   func switchToTabBar() {
-//    syncCookiesAndSwitch()
     tabBarController.load(Tabs.all)
     window?.rootViewController = tabBarController
+  }
+ 
+  func changeTab() {
+    self.tabBarController.selectedIndex = 1
   }
   
   func switchToNavigator() {

@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       SignOutComponent.self,
       HideTabBarComponent.self,
       ShowTabBarComponent.self,
+      ChangeTabComponent.self,
       CreateNoteComponent.self,
       DeleteNoteComponent.self,
       DeleteAccountComponent.self,
