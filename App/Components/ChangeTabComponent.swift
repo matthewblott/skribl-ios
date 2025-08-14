@@ -22,7 +22,6 @@ final class ChangeTabComponent: BridgeComponent {
     case .connect:
       
       if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-//        sceneDelegate.switchToTabBar()
         sceneDelegate.changeTab()
       }
       self.reply(to: message.event)

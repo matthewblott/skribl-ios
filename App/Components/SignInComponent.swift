@@ -28,18 +28,11 @@ final class SignInComponent: BridgeComponent {
     guard let data: MessageData = message.data() else { return }
     let image = UIImage(systemName: data.image ?? "")
     let action = UIAction { [unowned self] _ in
-//      let tbc = self.viewController?.tabBarController as? HotwireTabBarController
-//      let tb = tbc?.tabBar
-//      tbc?.selectedIndex = 1
-//      tb?.isHidden = false
+      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        sceneDelegate.selectNotesTab()
+        sceneDelegate.switchToTabBar()
+      }
       
-//      window?.rootViewController = tabBarController
-//      tabBarController?.load(Tabs.all)
-      
-//      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-//        sceneDelegate.switchToTabBar()
-//      }
-
       self.reply(to: message.event)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)

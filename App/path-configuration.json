@@ -13,6 +13,14 @@
     },
     {
       "patterns": [
+        "/sign_in$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
         "/\\d+/notes$"
       ],
       "properties": {
@@ -26,6 +34,14 @@
       "properties": {
         "presentation": "replace_root",
         "pull_to_refresh_enabled": false
+      }
+    },
+    {
+      "patterns": [
+        "/settings$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
       }
     }
   ]

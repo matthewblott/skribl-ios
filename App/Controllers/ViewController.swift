@@ -1,10 +1,14 @@
 import HotwireNative
-//import UIKit
+import UIKit
+import WebKit
 
 class ViewController : HotwireWebViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-//    visitableView.webView?.scrollView.bounces = false
-//    visitableView.webView?.scrollView.isScrollEnabled = false
   }
+
+//  override func makeWebView(configuration: WKWebViewConfiguration) -> WKWebView {
+//    configuration.websiteDataStore = sharedDataStore
+//    return super.makeWebView(configuration: configuration)
+//  }
 }

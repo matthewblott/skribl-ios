@@ -21,22 +21,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
     
-    let remotePathConfigURL = URL(
-      string: "\(Endpoint.baseURL)/configurations/ios_v1.json"
-    )!
+//    let remotePathConfigURL = URL(
+//      string: "\(Endpoint.baseURL)/configurations/ios_v1.json"
+//    )!
    
     Hotwire.loadPathConfiguration(from: [
       .file(localPathConfigURL),
-      .server(remotePathConfigURL)
+//      .server(remotePathConfigURL)
     ])
       
     Hotwire.config.defaultViewController = { ViewController(url: $0) }
-    
-//    Hotwire.config.makeCustomWebView = { url in
-//      let webView = WKWebView()
-//      webView.scrollView.bounces = false
-//      webView.scrollView.isScrollEnabled = false
-//      return webView
+#if DEBUG
+    Hotwire.config.debugLoggingEnabled = true
+#endif
+
+//    Hotwire.config.makeCustomWebView = { config in
+//      config.processPool = sharedProcessPool
+//      config.websiteDataStore = sharedDataStore
+//      return WKWebView(frame: .zero, configuration: config)
 //    }
     
     return true
@@ -46,11 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    configurationForConnecting connectingSceneSession: UISceneSession,
                    options: UIScene.ConnectionOptions
   ) -> UISceneConfiguration {
-    
     return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
   }
 
   func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
   }
 
+}
+
+let sharedProcessPool = WKProcessPool()
+let sharedDataStore = WKWebsiteDataStore.default()
+
+func makeWebView() -> WKWebView {
+  let config = WKWebViewConfiguration()
+  config.websiteDataStore = sharedDataStore
+  return WKWebView(frame: .zero, configuration: config)
 }
