@@ -34,12 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if DEBUG
     Hotwire.config.debugLoggingEnabled = true
 #endif
-
-//    Hotwire.config.makeCustomWebView = { config in
-//      config.processPool = sharedProcessPool
-//      config.websiteDataStore = sharedDataStore
-//      return WKWebView(frame: .zero, configuration: config)
-//    }
     
     return true
   }
@@ -54,13 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
   }
 
-}
-
-let sharedProcessPool = WKProcessPool()
-let sharedDataStore = WKWebsiteDataStore.default()
-
-func makeWebView() -> WKWebView {
-  let config = WKWebViewConfiguration()
-  config.websiteDataStore = sharedDataStore
-  return WKWebView(frame: .zero, configuration: config)
 }

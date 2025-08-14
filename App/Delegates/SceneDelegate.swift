@@ -19,12 +19,21 @@ final class SceneDelegate: UIResponder {
 
 extension SceneDelegate {
   func switchToTabBar() {
-    window?.rootViewController = tabBarController
+//    window?.rootViewController = tabBarController
+    
+//    let nc = tabBarController.viewControllers?[1] as? UINavigationController
+//    let webViewController = nc?.viewControllers.first as? HotwireWebViewController
+    
+    let url = Endpoint.baseURL.appending(path: "1/notes")
+    
+    let navigator = tabBarController.activeNavigator
+//    let url = URL(string: "")
+    navigator.route(url)
   }
    
   func switchToNavigator() {
-    window?.rootViewController = navigator.rootViewController
-    navigator.start()
+//    window?.rootViewController = navigator.rootViewController
+//    navigator.start()
   }
   
   func selectNotesTab() {
@@ -62,9 +71,10 @@ extension SceneDelegate: UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions
   ) {
     navigator.delegate = self
-    window?.rootViewController = navigator.rootViewController
-    navigator.start()
+//    window?.rootViewController = navigator.rootViewController
+//    navigator.start()
     tabBarController.load(Tabs.all)
+    window?.rootViewController = tabBarController
   }
 
 }

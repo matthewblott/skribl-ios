@@ -20,7 +20,6 @@ final class ShowTabBarComponent: BridgeComponent {
     guard let event = Event(rawValue: message.event) else { return }
     switch event {
     case .connect:
-      
       if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
         sceneDelegate.switchToTabBar()
       }

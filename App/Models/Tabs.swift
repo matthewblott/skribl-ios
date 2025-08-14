@@ -18,6 +18,11 @@ enum Tabs {
       image: UIImage(systemName: "person")!,
       url: Endpoint.baseURL.appending(path: "settings")
     ),
+    HotwireTab(
+      title: "Sign in",
+      image: UIImage(systemName: "person")!,
+      url: Endpoint.baseURL.appending(path: "sign_in")
+    ),
   ]
   
 }
