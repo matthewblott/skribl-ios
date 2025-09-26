@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Hotwire.registerBridgeComponents([
       TestComponent.self,
       SignInComponent.self,
+      SignInSuccessComponent.self,
       SignOutComponent.self,
       HideTabBarComponent.self,
       ShowTabBarComponent.self,
@@ -17,29 +18,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       CreateNoteComponent.self,
       DeleteNoteComponent.self,
       DeleteAccountComponent.self,
+      ToastComponent.self,
     ])
     
     let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
-    
-//    let remotePathConfigURL = URL(
-//      string: "\(Endpoint.baseURL)/configurations/ios_v1.json"
-//    )!
-   
+  
     Hotwire.loadPathConfiguration(from: [
       .file(localPathConfigURL),
-//      .server(remotePathConfigURL)
     ])
+
+    Hotwire.config.makeCustomWebView = { config in
+      config.websiteDataStore = WKWebsiteDataStore.default()
+      let webView = WKWebView(frame: .zero, configuration: config)
+     
+      if #available(iOS 16.4, *) {
+        webView.isInspectable = true
+      }
       
+      return webView
+    }
+    
     Hotwire.config.defaultViewController = { ViewController(url: $0) }
 #if DEBUG
     Hotwire.config.debugLoggingEnabled = true
 #endif
-
-//    Hotwire.config.makeCustomWebView = { config in
-//      config.processPool = sharedProcessPool
-//      config.websiteDataStore = sharedDataStore
-//      return WKWebView(frame: .zero, configuration: config)
-//    }
     
     return true
   }
@@ -48,19 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    configurationForConnecting connectingSceneSession: UISceneSession,
                    options: UIScene.ConnectionOptions
   ) -> UISceneConfiguration {
+    HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
     return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
   }
 
-  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-  }
-
-}
-
-let sharedProcessPool = WKProcessPool()
-let sharedDataStore = WKWebsiteDataStore.default()
-
-func makeWebView() -> WKWebView {
-  let config = WKWebViewConfiguration()
-  config.websiteDataStore = sharedDataStore
-  return WKWebView(frame: .zero, configuration: config)
 }

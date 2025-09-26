@@ -28,11 +28,6 @@ final class SignInComponent: BridgeComponent {
     guard let data: MessageData = message.data() else { return }
     let image = UIImage(systemName: data.image ?? "")
     let action = UIAction { [unowned self] _ in
-      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-        sceneDelegate.selectNotesTab()
-        sceneDelegate.switchToTabBar()
-      }
-      
       self.reply(to: message.event)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)

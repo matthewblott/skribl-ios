@@ -28,13 +28,37 @@ final class DeleteNoteComponent: BridgeComponent {
     guard let data: MessageData = message.data() else { return }
     let image = UIImage(systemName: data.image ?? "")
     let action = UIAction { [unowned self] _ in
-      self.reply(to: message.event)
+      presentAlert(via: message)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
     viewController?.navigationItem.rightBarButtonItem = item
   }
+  
+  private func presentAlert(via message: Message) {
+    guard let data: MessageData = message.data() else { return }
+    
+    let alert = UIAlertController(
+      title: data.title,
+      message: data.description,
+      preferredStyle: .alert
+    )
+    
+    alert.addAction(UIAlertAction(
+      title: data.confirm,
+      style: data.confirmActionStyle
+    ) { [unowned self] _ in
+      reply(to: message.event)
+    })
+    
+    alert.addAction(UIAlertAction(
+      title: data.dismiss,
+      style: .cancel
+    ) { _ in })
+    
+    viewController?.present(alert, animated: true)
+  }
+  
 }
-
 
 private extension DeleteNoteComponent{
   enum Event: String {
@@ -42,16 +66,24 @@ private extension DeleteNoteComponent{
   }
 }
 
-private extension DeleteNoteComponent{
+private extension DeleteNoteComponent {
   struct MessageData: Decodable {
     let title: String
+    let description: String?
+    let destructive: Bool
+    let confirm: String
+    let dismiss: String
     let image: String?
-    
+
     enum CodingKeys: String, CodingKey {
       case title
+      case description
+      case destructive
+      case confirm
+      case dismiss
       case image = "iosImage"
     }
+    var confirmActionStyle: UIAlertAction.Style { destructive ? .destructive : .default }
+
   }
 }
-
-

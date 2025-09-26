@@ -19,12 +19,17 @@ final class SceneDelegate: UIResponder {
 
 extension SceneDelegate {
   func switchToTabBar() {
+    // tabBarController.activeNavigator.clearAll()
+    tabBarController.load(Tabs.all)
     window?.rootViewController = tabBarController
+    
   }
-   
+  
   func switchToNavigator() {
-    window?.rootViewController = navigator.rootViewController
+    // navigator.clearAll(animated: false)  // Clear entire stack
+    // navigator.route(Endpoint.baseURL)
     navigator.start()
+    window?.rootViewController = navigator.rootViewController
   }
   
   func selectNotesTab() {
@@ -52,7 +57,30 @@ extension SceneDelegate {
     }
     
   }
-  
+
+  func checkUserAuthentication() async -> Bool {
+    guard let url = URL(string: "http://localhost:3000/signed_in") else {
+      return false
+    }
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    
+    do {
+      let (data, _) = try await URLSession.shared.data(for: request)
+      
+      if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+         let signedIn = json["signed_in"] as? Bool {
+        return signedIn
+      }
+      return false
+    } catch {
+      print("JSON parsing error: \(error)")
+      return false
+    }
+  }
+
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
@@ -62,9 +90,19 @@ extension SceneDelegate: UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions
   ) {
     navigator.delegate = self
-    window?.rootViewController = navigator.rootViewController
-    navigator.start()
-    tabBarController.load(Tabs.all)
+    
+    // If the user is signed in then execute switchToTabBar
+    Task {
+      let signedIn = await checkUserAuthentication()
+      await MainActor.run {
+        if signedIn {
+          self.switchToTabBar()
+        }
+        else {
+          self.switchToNavigator()
+        }
+      }
+    }
   }
 
 }

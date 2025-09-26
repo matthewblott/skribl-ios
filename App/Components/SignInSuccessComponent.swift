@@ -1,8 +1,8 @@
 import HotwireNative
 import UIKit
 
-final class TestComponent: BridgeComponent {
-  override class var name: String { "test" }
+final class SignInSuccessComponent: BridgeComponent {
+  override class var name: String { "sign-in-success" }
   
   private var window: UIWindow? {
     viewController?.view.window as? UIWindow
@@ -19,22 +19,30 @@ final class TestComponent: BridgeComponent {
   override func onReceive(message: Message) {
     guard let event = Event(rawValue: message.event) else { return }
     switch event {
-    case .connect:
+    case .authenticated:
+      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        sceneDelegate.selectNotesTab()
+        sceneDelegate.switchToTabBar()
+      }
       self.reply(to: message.event)
     }
   }
-  
+
 }
 
-private extension TestComponent{
+private extension SignInSuccessComponent{
   enum Event: String {
-    case connect
+    case authenticated
   }
 }
 
-private extension TestComponent{
+private extension SignInSuccessComponent{
   struct MessageData: Decodable {
-    let title: String
+    let value: String
+    
+    enum CodingKeys: String, CodingKey {
+      case value
+    }
   }
 }
 
