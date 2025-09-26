@@ -19,15 +19,18 @@ final class SceneDelegate: UIResponder {
 
 extension SceneDelegate {
   func switchToTabBar() {
-    // tabBarController.activeNavigator.clearAll()
     tabBarController.load(Tabs.all)
     window?.rootViewController = tabBarController
     
   }
   
-  func switchToNavigator() {
-    // navigator.clearAll(animated: false)  // Clear entire stack
+  func clear() {
+    // tabBarController.activeNavigator.clearAll()
     // navigator.route(Endpoint.baseURL)
+    navigator.clearAll(animated: false)
+  }
+  
+  func switchToNavigator() {
     navigator.start()
     window?.rootViewController = navigator.rootViewController
   }

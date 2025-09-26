@@ -29,6 +29,7 @@ final class SignOutComponent: BridgeComponent {
     let image = UIImage(systemName: data.image ?? "")
     let action = UIAction { [unowned self] _ in
       if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        sceneDelegate.clear()
         sceneDelegate.switchToNavigator()
       }
       self.reply(to: message.event)
