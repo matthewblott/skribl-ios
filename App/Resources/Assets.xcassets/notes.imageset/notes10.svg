@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     width="24" height="24"
+     xml:space="preserve">
+
+  <!-- Left document -->
+  <g transform="translate(0.5,0.5) scale(0.25,0.25)">
+    <rect x="5" y="14" width="22" height="2"/>
+    <rect x="5" y="20" width="22" height="2"/>
+    <rect x="5" y="26" width="17" height="2"/>
+    <rect x="5" y="32" width="12" height="2"/>
+    <rect x="5" y="38" width="12" height="2"/>
+    <path d="M28,1H-3v48h38V8.414L28,1z M28,4.414L31.586,8H28V4.414z M33,47H-1V3h27v7h7V47z"/>
+  </g>
+
+  <!-- Right document -->
+  <g transform="translate(12.5,0.5) scale(0.25,0.25)">
+    <rect x="5" y="14" width="22" height="2"/>
+    <rect x="5" y="20" width="22" height="2"/>
+    <rect x="5" y="26" width="17" height="2"/>
+    <rect x="5" y="32" width="12" height="2"/>
+    <rect x="5" y="38" width="12" height="2"/>
+    <path d="M28,1H-3v48h38V8.414L28,1z M28,4.414L31.586,8H28V4.414z M33,47H-1V3h27v7h7V47z"/>
+  </g>
+</svg>
+

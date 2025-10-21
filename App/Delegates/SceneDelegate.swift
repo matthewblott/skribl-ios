@@ -12,7 +12,7 @@ final class SceneDelegate: UIResponder {
   private let navigator = Navigator(
     configuration: .init(
       name: "unauthenticated-navigator",
-      startLocation: Endpoint.baseURL
+      startLocation: Endpoint.baseURL!
     )
   )
 }
@@ -25,14 +25,13 @@ extension SceneDelegate {
   }
   
   func clear() {
-    // tabBarController.activeNavigator.clearAll()
-    // navigator.route(Endpoint.baseURL)
     navigator.clearAll(animated: false)
   }
   
   func switchToNavigator() {
     navigator.start()
     window?.rootViewController = navigator.rootViewController
+    navigator.session.webView.reload()
   }
   
   func selectNotesTab() {
@@ -62,7 +61,7 @@ extension SceneDelegate {
   }
 
   func checkUserAuthentication() async -> Bool {
-    guard let url = URL(string: "http://localhost:3000/signed_in") else {
+    guard let url = Endpoint.baseURL else {
       return false
     }
     
@@ -122,6 +121,8 @@ extension SceneDelegate: NavigatorDelegate {
       webView.scrollView.bounces = true
       webView.scrollView.isScrollEnabled = true
     }
+   
+    webView.layoutIfNeeded()
     
     return .accept
   }

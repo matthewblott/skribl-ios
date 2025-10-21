@@ -1,10 +1,10 @@
 import UIKit
 
 struct Endpoint {
-  static let remote = URL(string: "https://example.com")!
-  static let local = URL(string: "http://localhost:3000")!
-  
-  static var baseURL: URL {
-    local
+  static let remote: URL? = URL(string: "https://scribble.coderscoffeehouse.com")!
+  static let local: URL? = URL(string: "http://localhost:3000")!
+
+  static var baseURL: URL? {
+    remote
   }
 }

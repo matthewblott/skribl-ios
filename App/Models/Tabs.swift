@@ -4,19 +4,19 @@ import UIKit
 enum Tabs {
   static let all: [HotwireTab] = [
     HotwireTab(
-      title: "Notes",
-      image: UIImage(systemName: "person")!,
-      url: Endpoint.baseURL.appending(path: "1/notes")
+      title: "Scribbles",
+      image: UIImage(named: "notes")!,
+      url: Endpoint.baseURL!.appending(path: "1/notes")
     ),
     HotwireTab(
-      title: "New Note",
-      image: UIImage(systemName: "person")!,
-      url: Endpoint.baseURL.appending(path: "1/notes/new")
+      title: "New Scribble",
+      image: UIImage(named: "note-ios-2")!,
+      url: Endpoint.baseURL!.appending(path: "1/notes/new")
     ),
     HotwireTab(
       title: "Settings",
-      image: UIImage(systemName: "person")!,
-      url: Endpoint.baseURL.appending(path: "settings")
+      image: UIImage(systemName: "gearshape.fill")!,
+      url: Endpoint.baseURL!.appending(path: "settings")
     ),
   ]
   
