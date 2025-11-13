@@ -1,8 +1,8 @@
 import HotwireNative
 import UIKit
 
-final class CreateNoteComponent: BridgeComponent {
-  override class var name: String { "create-note" }
+final class SendOtpComponent: BridgeComponent {
+  override class var name: String { "send-otp" }
   
   private var window: UIWindow? {
     viewController?.view.window as? UIWindow
@@ -31,19 +31,18 @@ final class CreateNoteComponent: BridgeComponent {
       self.reply(to: message.event)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
-//    viewController?.navigationItem.rightBarButtonItem = item
-    viewController?.navigationItem.leftBarButtonItem = item
+    viewController?.navigationItem.rightBarButtonItem = item
   }
 }
 
 
-private extension CreateNoteComponent{
+private extension SendOtpComponent{
   enum Event: String {
     case connect
   }
 }
 
-private extension CreateNoteComponent{
+private extension SendOtpComponent{
   struct MessageData: Decodable {
     let title: String
     let image: String?

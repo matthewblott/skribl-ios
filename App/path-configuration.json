@@ -13,6 +13,22 @@
     },
     {
       "patterns": [
+        "/send_otp$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
+        "/enter_otp$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
         "/\\d+/notes$"
       ],
       "properties": {

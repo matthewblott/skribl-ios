@@ -34,6 +34,12 @@ extension SceneDelegate {
     navigator.session.webView.reload()
   }
   
+  func setToRoot() {
+    if let url = Endpoint.baseURL {
+      navigator.route(url)
+    }
+  }
+  
   func selectNotesTab() {
     self.tabBarController.selectedIndex = 0
   }
@@ -61,11 +67,12 @@ extension SceneDelegate {
   }
 
   func checkUserAuthentication() async -> Bool {
-    guard let url = Endpoint.baseURL else {
+    guard let url = Endpoint.baseURL?.appendingPathComponent("/signed_in") else {
       return false
     }
     
     var request = URLRequest(url: url)
+    
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Accept")
     
@@ -73,7 +80,7 @@ extension SceneDelegate {
       let (data, _) = try await URLSession.shared.data(for: request)
       
       if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-         let signedIn = json["signed_in"] as? Bool {
+        let signedIn = json["signed_in"] as? Bool {
         return signedIn
       }
       return false

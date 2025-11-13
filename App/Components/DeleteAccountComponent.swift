@@ -37,7 +37,13 @@ final class DeleteAccountComponent: BridgeComponent {
       title: data.confirm,
       style: data.confirmActionStyle
     ) { [unowned self] _ in
-      reply(to: message.event)
+      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        Settings.userId = 0
+        sceneDelegate.clear()
+        sceneDelegate.switchToNavigator()
+        sceneDelegate.setToRoot()
+      }
+      self.reply(to: message.event)
     })
     
     alert.addAction(UIAlertAction(

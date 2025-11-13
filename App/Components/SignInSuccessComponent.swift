@@ -20,7 +20,12 @@ final class SignInSuccessComponent: BridgeComponent {
     guard let event = Event(rawValue: message.event) else { return }
     switch event {
     case .authenticated:
-      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+      if let data: MessageData = message.data(),
+         let userId = Int(data.value),
+         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        
+        Settings.userId = userId
+        
         sceneDelegate.selectNotesTab()
         sceneDelegate.switchToTabBar()
       }

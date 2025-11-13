@@ -9,12 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     Hotwire.registerBridgeComponents([
       TestComponent.self,
+      SendOtpComponent.self,
       SignInComponent.self,
       SignInSuccessComponent.self,
       SignOutComponent.self,
       HideTabBarComponent.self,
       ShowTabBarComponent.self,
       ChangeTabComponent.self,
+      ClearCanvasComponent.self,
       CreateNoteComponent.self,
       DeleteNoteComponent.self,
       DeleteAccountComponent.self,
@@ -42,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if DEBUG
     Hotwire.config.debugLoggingEnabled = true
 #endif
-    
+    Hotwire.config.applicationUserAgentPrefix = "Scribble;"
+
     return true
   }
   

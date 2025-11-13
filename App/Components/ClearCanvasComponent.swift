@@ -1,8 +1,8 @@
 import HotwireNative
 import UIKit
 
-final class CreateNoteComponent: BridgeComponent {
-  override class var name: String { "create-note" }
+final class ClearCanvasComponent: BridgeComponent {
+  override class var name: String { "clear-canvas" }
   
   private var window: UIWindow? {
     viewController?.view.window as? UIWindow
@@ -31,19 +31,18 @@ final class CreateNoteComponent: BridgeComponent {
       self.reply(to: message.event)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
-//    viewController?.navigationItem.rightBarButtonItem = item
     viewController?.navigationItem.leftBarButtonItem = item
   }
 }
 
 
-private extension CreateNoteComponent{
+private extension ClearCanvasComponent{
   enum Event: String {
     case connect
   }
 }
 
-private extension CreateNoteComponent{
+private extension ClearCanvasComponent{
   struct MessageData: Decodable {
     let title: String
     let image: String?

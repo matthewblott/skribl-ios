@@ -6,7 +6,7 @@ enum Tabs {
     HotwireTab(
       title: "Scribbles",
       image: UIImage(named: "notes")!,
-      url: Endpoint.baseURL!.appending(path: "1/notes")
+      url: Endpoint.baseURL!.appending(path: "${Settings}/notes")
     ),
     HotwireTab(
       title: "New Scribble",
