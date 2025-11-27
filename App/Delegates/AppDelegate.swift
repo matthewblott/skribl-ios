@@ -9,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     Hotwire.registerBridgeComponents([
       TestComponent.self,
+      PlaceholderComponent.self,
       SendOtpComponent.self,
       SignInComponent.self,
       SignInSuccessComponent.self,

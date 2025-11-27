@@ -31,8 +31,7 @@ final class CreateNoteComponent: BridgeComponent {
       self.reply(to: message.event)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
-//    viewController?.navigationItem.rightBarButtonItem = item
-    viewController?.navigationItem.leftBarButtonItem = item
+    viewController?.navigationItem.rightBarButtonItem = item
   }
 }
 

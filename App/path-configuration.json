@@ -21,7 +21,7 @@
     },
     {
       "patterns": [
-        "/enter_otp$"
+        "/enter_otp"
       ],
       "properties": {
         "presentation": "replace_root"
@@ -40,7 +40,6 @@
         "/\\d+/notes\\?note_deleted=1$"
       ],
       "properties": {
-        "uri": "hotwire://fragment/web",
         "presentation": "replace_root"
       }
     },

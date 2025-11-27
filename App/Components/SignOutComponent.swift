@@ -21,7 +21,16 @@ final class SignOutComponent: BridgeComponent {
     switch event {
     case .connect:
       addButton(via: message)
+    case .foo:
+      if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+        Settings.userId = 0
+        sceneDelegate.clear()
+        sceneDelegate.switchToNavigator()
+        sceneDelegate.setToRoot()
+      }
+      self.reply(to: message.event)
     }
+    
   }
   
   private func addButton(via message: Message) {
@@ -41,10 +50,10 @@ final class SignOutComponent: BridgeComponent {
   }
 }
 
-
 private extension SignOutComponent{
   enum Event: String {
     case connect
+    case foo
   }
 }
 

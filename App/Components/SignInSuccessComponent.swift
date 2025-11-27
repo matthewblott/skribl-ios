@@ -25,8 +25,7 @@ final class SignInSuccessComponent: BridgeComponent {
          let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
         
         Settings.userId = userId
-        
-        sceneDelegate.selectNotesTab()
+        sceneDelegate.selectNewNoteTab()
         sceneDelegate.switchToTabBar()
       }
       self.reply(to: message.event)

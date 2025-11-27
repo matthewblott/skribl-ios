@@ -21,7 +21,6 @@ extension SceneDelegate {
   func switchToTabBar() {
     tabBarController.load(Tabs.all)
     window?.rootViewController = tabBarController
-    
   }
   
   func clear() {
