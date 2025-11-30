@@ -20,6 +20,20 @@ final class SceneDelegate: UIResponder {
 extension SceneDelegate {
   func switchToTabBar() {
     tabBarController.load(Tabs.all)
+    
+    let appearance = UITabBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    
+    // Remove top border
+    appearance.shadowImage = UIImage()
+    appearance.shadowColor = .clear
+    
+    // Optional: keep your white background
+    appearance.backgroundColor = .white
+    
+    tabBarController.tabBar.standardAppearance = appearance
+    tabBarController.tabBar.scrollEdgeAppearance = appearance
+    
     window?.rootViewController = tabBarController
   }
   
@@ -123,14 +137,19 @@ extension SceneDelegate: NavigatorDelegate {
     if targetURL.path.contains("new") {
       webView.scrollView.bounces = false
       webView.scrollView.isScrollEnabled = false
+      
+      // Adjust insets after a brief delay to ensure safe areas are calculated
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        let bottomInset = webView.safeAreaInsets.bottom
+        webView.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+      }
     } else {
       webView.scrollView.bounces = true
       webView.scrollView.isScrollEnabled = true
+      webView.scrollView.contentInset = .zero
     }
-   
-    webView.layoutIfNeeded()
     
     return .accept
   }
-  
+
 }

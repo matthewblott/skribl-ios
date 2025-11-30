@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Hotwire.registerBridgeComponents([
       TestComponent.self,
       PlaceholderComponent.self,
+      CancelDeleteComponent.self,
       SendOtpComponent.self,
       SignInComponent.self,
       SignInSuccessComponent.self,

@@ -16,7 +16,7 @@
         "/send_otp$"
       ],
       "properties": {
-        "presentation": "replace_root"
+        "presentation": "clear"
       }
     },
     {
@@ -24,7 +24,7 @@
         "/enter_otp"
       ],
       "properties": {
-        "presentation": "replace_root"
+        "presentation": "clear"
       }
     },
     {
@@ -32,7 +32,7 @@
         "/\\d+/notes$"
       ],
       "properties": {
-        "presentation": "replace_root"
+        "presentation": "clear"
       }
     },
     {
@@ -40,7 +40,7 @@
         "/\\d+/notes\\?note_deleted=1$"
       ],
       "properties": {
-        "presentation": "replace_root"
+        "presentation": "clear"
       }
     },
     {
@@ -49,7 +49,7 @@
       ],
       "properties": {
         "uri": "hotwire://fragment/web",
-        "presentation": "replace_root",
+        "presentation": "clear",
         "pull_to_refresh_enabled": false
       }
     },
