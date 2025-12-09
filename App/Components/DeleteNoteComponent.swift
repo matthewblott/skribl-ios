@@ -21,6 +21,8 @@ final class DeleteNoteComponent: BridgeComponent {
     switch event {
     case .connect:
       addButton(via: message)
+    case .toggleEnabled
+      : toggleEnabled(via: message)
     }
   }
   
@@ -31,7 +33,13 @@ final class DeleteNoteComponent: BridgeComponent {
       presentAlert(via: message)
     }
     let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
+    item.isEnabled = data.enabled
     viewController?.navigationItem.rightBarButtonItem = item
+  }
+  
+  private func toggleEnabled(via message: Message) {
+    guard let data: MessageData = message.data() else { return }
+    viewController?.navigationItem.rightBarButtonItem?.isEnabled = data.enabled
   }
   
   private func presentAlert(via message: Message) {
@@ -57,12 +65,12 @@ final class DeleteNoteComponent: BridgeComponent {
     
     viewController?.present(alert, animated: true)
   }
-  
 }
 
 private extension DeleteNoteComponent{
   enum Event: String {
     case connect
+    case toggleEnabled
   }
 }
 
@@ -74,6 +82,7 @@ private extension DeleteNoteComponent {
     let confirm: String
     let dismiss: String
     let image: String?
+    let enabled: Bool
 
     enum CodingKeys: String, CodingKey {
       case title
@@ -82,6 +91,7 @@ private extension DeleteNoteComponent {
       case confirm
       case dismiss
       case image = "iosImage"
+      case enabled
     }
     var confirmActionStyle: UIAlertAction.Style { destructive ? .destructive : .default }
 

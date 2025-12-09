@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       CreateNoteComponent.self,
       DeleteNoteComponent.self,
       DeleteAccountComponent.self,
+      ToggleSelectionComponent.self,
       ToastComponent.self,
     ])
     
