@@ -28,22 +28,24 @@ final class ToggleSelectionComponent: BridgeComponent {
   
   private func addButton(via message: Message) {
     guard let data: MessageData = message.data() else { return }
-    
+
+    var item: UIBarButtonItem!
+
     let action = UIAction { [unowned self] _ in
+      item.isEnabled = false
       struct ReplyData: Encodable {
         let info: String
         let clicked: Bool
       }
       
-      let replyData = ReplyData(info: "user tapped native button", clicked: true)
+      let replyData = ReplyData(info: "user tapped native button 1", clicked: true)
       let replyMessage = message.replacing(data: replyData)
-      
       self.reply(with: replyMessage)
     }
     
     let title = data.title
-    let item = UIBarButtonItem(title: title, primaryAction: action)
     
+    item = UIBarButtonItem(title: title, primaryAction: action)
     item.isEnabled = data.enabled
     
     viewController?.navigationItem.leftBarButtonItem = item
@@ -51,29 +53,30 @@ final class ToggleSelectionComponent: BridgeComponent {
 
   private func updateButton(via message: Message) {
     guard let data: MessageData = message.data() else { return }
+    
     viewController?.navigationItem.leftBarButtonItem?.title = data.title
     viewController?.navigationItem.leftBarButtonItem?.isEnabled = data.enabled
-  }
-  
-  private func update(via message: Message) {
-    guard let data: MessageData = message.data() else { return }
     
-    let action = UIAction { [unowned self] _ in
-      struct ReplyData: Encodable {
-        let info: String
-        let clicked: Bool
-      }
-      let replyData = ReplyData(info: "user tapped native button", clicked: true)
-      let replyMessage = message.replacing(data: replyData)
-      self.reply(with: replyMessage)
-    }
+//    var item: UIBarButtonItem!
+//    
+//    let action = UIAction { [unowned self] _ in
+//      item.isEnabled = false
+//      struct ReplyData: Encodable {
+//        let info: String
+//        let clicked: Bool
+//      }
+//      
+//      let replyData = ReplyData(info: "user tapped native button 2", clicked: true)
+//      let replyMessage = message.replacing(data: replyData)
+//      self.reply(with: replyMessage)
+//    }
     
-    let title = data.title
-    let item = UIBarButtonItem(title: title, primaryAction: action)
-    
-    item.isEnabled = data.enabled
-    
-    viewController?.navigationItem.leftBarButtonItem = item
+//    let title = data.title
+//    
+//    item = UIBarButtonItem(title: title, primaryAction: action)
+//    item.isEnabled = data.enabled
+//    
+//    viewController?.navigationItem.leftBarButtonItem = item
   }
   
 }

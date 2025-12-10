@@ -21,36 +21,57 @@ final class ClearCanvasComponent: BridgeComponent {
     switch event {
     case .connect:
       addButton(via: message)
+    case .update:
+      updateButton(via: message)
     }
   }
-  
+ 
   private func addButton(via message: Message) {
     guard let data: MessageData = message.data() else { return }
-    let image = UIImage(systemName: data.image ?? "")
+    
     let action = UIAction { [unowned self] _ in
-      self.reply(to: message.event)
+      struct ReplyData: Encodable {
+        let info: String
+        let clicked: Bool
+      }
+      
+      let replyData = ReplyData(info: "user tapped native button", clicked: true)
+      let replyMessage = message.replacing(data: replyData)
+      
+      self.reply(with: replyMessage)
     }
-    let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
+    
+    let title = data.title
+    let item = UIBarButtonItem(title: title, primaryAction: action)
+    
+    item.isEnabled = data.enabled
+    
     viewController?.navigationItem.leftBarButtonItem = item
   }
+  
+  private func updateButton(via message: Message) {
+    guard let data: MessageData = message.data() else { return }
+    viewController?.navigationItem.leftBarButtonItem?.title = data.title
+    viewController?.navigationItem.leftBarButtonItem?.isEnabled = data.enabled
+  }
+  
 }
-
 
 private extension ClearCanvasComponent{
   enum Event: String {
     case connect
+    case update
   }
 }
 
 private extension ClearCanvasComponent{
   struct MessageData: Decodable {
     let title: String
-    let image: String?
+    let enabled: Bool
     
     enum CodingKeys: String, CodingKey {
       case title
-      case image = "iosImage"
+      case enabled
     }
   }
 }
-

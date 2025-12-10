@@ -46,7 +46,7 @@ final class DeleteNoteComponent: BridgeComponent {
     guard let data: MessageData = message.data() else { return }
     
     let alert = UIAlertController(
-      title: data.title,
+      title: "Delete Note(s)",
       message: data.description,
       preferredStyle: .alert
     )
