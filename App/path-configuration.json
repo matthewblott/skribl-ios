@@ -48,7 +48,6 @@
         "/\\d+/notes/new$"
       ],
       "properties": {
-        "uri": "hotwire://fragment/web",
         "presentation": "clear",
         "pull_to_refresh_enabled": false
       }
@@ -59,7 +58,6 @@
       ],
       "properties": {
         "context": "default",
-        "uri": "hotwire://fragment/web",
         "pull_to_refresh_enabled": false
       }
     }

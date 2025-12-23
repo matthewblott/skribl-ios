@@ -35,6 +35,7 @@ extension SceneDelegate {
     tabBarController.tabBar.scrollEdgeAppearance = appearance
     
     window?.rootViewController = tabBarController
+    
   }
   
   func clear() {
@@ -88,6 +89,7 @@ extension SceneDelegate {
     
     request.httpMethod = "GET"
     request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.addValue("1", forHTTPHeaderField: "ngrok-skip-browser-warning")
     
     do {
       let (data, _) = try await URLSession.shared.data(for: request)

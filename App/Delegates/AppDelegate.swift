@@ -8,22 +8,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     Hotwire.registerBridgeComponents([
-      TestComponent.self,
-      PlaceholderComponent.self,
-      CancelDeleteComponent.self,
-      SendOtpComponent.self,
-      SignInComponent.self,
-      SignInSuccessComponent.self,
-      SignOutComponent.self,
-      HideTabBarComponent.self,
-      ShowTabBarComponent.self,
-      ChangeTabComponent.self,
       ClearCanvasComponent.self,
       CreateNoteComponent.self,
       DeleteNoteComponent.self,
       DeleteAccountComponent.self,
-      ToggleSelectionComponent.self,
+      DownloadComponent.self,
+      PlaceholderComponent.self,
+      SendOtpComponent.self,
+      SignInComponent.self,
+      SignInSuccessComponent.self,
+      SignOutComponent.self,
       ToastComponent.self,
+      ToggleSelectionComponent.self,
     ])
     
     let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
@@ -61,3 +57,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
 }
+
