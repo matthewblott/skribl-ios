@@ -46,6 +46,11 @@ final class DownloadComponent: BridgeComponent {
   }
   
   func download(csrfToken: String) {
+    
+    HTTPCookieStorage.shared.cookies?.forEach {
+      print("Cookie:", $0.name, $0.domain)
+    }
+    
     let config = URLSessionConfiguration.default
     
     config.httpCookieStorage = HTTPCookieStorage.shared
