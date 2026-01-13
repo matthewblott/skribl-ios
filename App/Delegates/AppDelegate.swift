@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if DEBUG
     Hotwire.config.debugLoggingEnabled = true
 #endif
-    Hotwire.config.applicationUserAgentPrefix = "Scribble;"
+    Hotwire.config.applicationUserAgentPrefix = "Skribl;"
 
     return true
   }

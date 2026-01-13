@@ -11,16 +11,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C9B4E9C12E43C4A400D8D9BB /* Scribble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scribble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9B4E9C12E43C4A400D8D9BB /* Skribl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skribl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C9B4E9D32E43C4A600D8D9BB /* Exceptions for "App" folder in "Scribble" target */ = {
+		C9B4E9D32E43C4A600D8D9BB /* Exceptions for "App" folder in "Skribl" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Configuration/Info.plist,
 			);
-			target = C9B4E9C02E43C4A400D8D9BB /* Scribble */;
+			target = C9B4E9C02E43C4A400D8D9BB /* Skribl */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -28,7 +28,7 @@
 		C9B4E9C32E43C4A400D8D9BB /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				C9B4E9D32E43C4A600D8D9BB /* Exceptions for "App" folder in "Scribble" target */,
+				C9B4E9D32E43C4A600D8D9BB /* Exceptions for "App" folder in "Skribl" target */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -58,7 +58,7 @@
 		C9B4E9C22E43C4A400D8D9BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9B4E9C12E43C4A400D8D9BB /* Scribble.app */,
+				C9B4E9C12E43C4A400D8D9BB /* Skribl.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,9 +66,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9B4E9C02E43C4A400D8D9BB /* Scribble */ = {
+		C9B4E9C02E43C4A400D8D9BB /* Skribl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9B4E9D42E43C4A600D8D9BB /* Build configuration list for PBXNativeTarget "Scribble" */;
+			buildConfigurationList = C9B4E9D42E43C4A600D8D9BB /* Build configuration list for PBXNativeTarget "Skribl" */;
 			buildPhases = (
 				C9B4E9BD2E43C4A400D8D9BB /* Sources */,
 				C9B4E9BE2E43C4A400D8D9BB /* Frameworks */,
@@ -81,12 +81,12 @@
 			fileSystemSynchronizedGroups = (
 				C9B4E9C32E43C4A400D8D9BB /* App */,
 			);
-			name = Scribble;
+			name = Skribl;
 			packageProductDependencies = (
 				C9B4E9DF2E43C5CA00D8D9BB /* HotwireNative */,
 			);
-			productName = Scribble;
-			productReference = C9B4E9C12E43C4A400D8D9BB /* Scribble.app */;
+			productName = Skribl;
+			productReference = C9B4E9C12E43C4A400D8D9BB /* Skribl.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,7 +104,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9B4E9BC2E43C4A400D8D9BB /* Build configuration list for PBXProject "Scribble" */;
+			buildConfigurationList = C9B4E9BC2E43C4A400D8D9BB /* Build configuration list for PBXProject "Skribl" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9B4E9C02E43C4A400D8D9BB /* Scribble */,
+				C9B4E9C02E43C4A400D8D9BB /* Skribl */,
 			);
 		};
 /* End PBXProject section */
@@ -154,6 +154,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5ZA5XNV3A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -166,7 +167,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewblott.Scribble;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewblott.Skribl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -181,6 +182,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J5ZA5XNV3A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -193,7 +195,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewblott.Scribble;
+				PRODUCT_BUNDLE_IDENTIFIER = com.matthewblott.Skribl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -323,7 +325,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9B4E9BC2E43C4A400D8D9BB /* Build configuration list for PBXProject "Scribble" */ = {
+		C9B4E9BC2E43C4A400D8D9BB /* Build configuration list for PBXProject "Skribl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9B4E9D72E43C4A600D8D9BB /* Debug */,
@@ -332,7 +334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9B4E9D42E43C4A600D8D9BB /* Build configuration list for PBXNativeTarget "Scribble" */ = {
+		C9B4E9D42E43C4A600D8D9BB /* Build configuration list for PBXNativeTarget "Skribl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9B4E9D52E43C4A600D8D9BB /* Debug */,

@@ -109,7 +109,7 @@ final class DownloadComponent: BridgeComponent {
 
         let fileManager = FileManager.default
         let destination = documents
-          .appendingPathComponent("Scribbles")
+          .appendingPathComponent("skribl")
           .appendingPathExtension("zip")
 
         // Remove existing file if needed
