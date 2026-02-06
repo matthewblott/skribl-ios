@@ -5,6 +5,14 @@ import WebKit
 class ViewController : HotwireWebViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationItem.hidesBackButton = true
+    
+    let location = self.bridgeDelegate.location
+    
+    if(location.contains("privacy") || location.contains("terms")) {
+      self.navigationItem.hidesBackButton = false
+    }
+    else {
+      self.navigationItem.hidesBackButton = true
+    }
   }
 }
