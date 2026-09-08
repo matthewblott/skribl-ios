@@ -10,7 +10,13 @@ public final class AuthenticatedComponent: BridgeComponent {
     switch event {
     case .connect:
       if let data: MessageData = message.data() {
-        let userId = Int(data.value)
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        if let sceneDelegate {
+          Settings.userId = Int(data.value)!
+          if(Settings.userId > 0) {
+            sceneDelegate.switchToTabBar()
+          }
+        }
       }
       
       return

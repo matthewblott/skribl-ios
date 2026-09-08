@@ -10,7 +10,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     Hotwire.registerBridgeComponents(
       Bridgework.coreComponents + [
-        AuthenticatedComponent.self
+        AuthenticatedComponent.self,
+        UnauthenticatedComponent.self,
       ]
     )
     
