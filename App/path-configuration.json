@@ -13,18 +13,42 @@
     },
     {
       "patterns": [
-        "/send_otp$"
+        "/info"
       ],
       "properties": {
-        "presentation": "clear"
+        "presentation": "replace_root"
       }
     },
     {
       "patterns": [
-        "/enter_otp"
+        "/auth"
       ],
       "properties": {
-        "presentation": "clear"
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
+        "/auth/new"
+      ],
+      "properties": {
+        "presentation": "default"
+      }
+    },
+    {
+      "patterns": [
+        "/auth/verify"
+      ],
+      "properties": {
+        "presentation": "replace_root"
+      }
+    },
+    {
+      "patterns": [
+        "/\\d+/account$"
+      ],
+      "properties": {
+        "presentation": "replace_root"
       }
     },
     {

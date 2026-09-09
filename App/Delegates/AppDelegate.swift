@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Hotwire.registerBridgeComponents(
       Bridgework.coreComponents + [
         AuthenticatedComponent.self,
+        DownloadComponent.self,
         UnauthenticatedComponent.self,
       ]
     )
