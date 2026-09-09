@@ -4,7 +4,7 @@ import WebKit
 
 final class SceneDelegate: UIResponder {
   var window: UIWindow?
-
+  
   public lazy var tabBarController = TabBarController (
     navigatorDelegate: self
   )
@@ -19,7 +19,7 @@ final class SceneDelegate: UIResponder {
 
 extension SceneDelegate {
   func switchToTabBar() {
-    tabBarController.load(Tabs.all)
+    tabBarController.load(Tabs.all(for: Settings.userId))
     
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
@@ -35,7 +35,6 @@ extension SceneDelegate {
     tabBarController.tabBar.scrollEdgeAppearance = appearance
     
     window?.rootViewController = tabBarController
-    
   }
   
   func clear() {
@@ -62,47 +61,8 @@ extension SceneDelegate {
     self.tabBarController.selectedIndex = 1
   }
   
-  func selectSettingsTab() {
+  func selectAccountTab() {
     self.tabBarController.selectedIndex = 2
-  }
-  
-  func changeTab() {
-    let currentIndex = self.tabBarController.selectedIndex
-    
-    if currentIndex == 0 {
-      self.tabBarController.selectedIndex = 1
-    }
-    else if currentIndex == 1 {
-      self.tabBarController.selectedIndex = 2
-    }
-    else if currentIndex == 2 {
-    }
-    
-  }
-
-  func checkUserAuthentication() async -> Bool {
-    guard let url = Endpoint.baseURL?.appendingPathComponent("/signed_in") else {
-      return false
-    }
-    
-    var request = URLRequest(url: url)
-    
-    request.httpMethod = "GET"
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-    request.addValue("1", forHTTPHeaderField: "ngrok-skip-browser-warning")
-    
-    do {
-      let (data, _) = try await URLSession.shared.data(for: request)
-      
-      if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-        let signedIn = json["signed_in"] as? Bool {
-        return signedIn
-      }
-      return false
-    } catch {
-      print("JSON parsing error: \(error)")
-      return false
-    }
   }
 
 }
@@ -114,21 +74,9 @@ extension SceneDelegate: UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions
   ) {
     navigator.delegate = self
-    
-    // If the user is signed in then execute switchToTabBar
-    Task {
-      let signedIn = await checkUserAuthentication()
-      await MainActor.run {
-        if signedIn {
-          self.switchToTabBar()
-        }
-        else {
-          self.switchToNavigator()
-        }
-      }
-    }
+    self.switchToNavigator()
   }
-
+  
 }
 
 extension SceneDelegate: NavigatorDelegate {
@@ -153,5 +101,5 @@ extension SceneDelegate: NavigatorDelegate {
     
     return .accept
   }
-
+  
 }

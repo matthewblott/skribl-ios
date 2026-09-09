@@ -11,7 +11,7 @@ class ViewController : HotwireWebViewController {
     if(location.contains("privacy") || location.contains("terms")) {
       self.navigationItem.hidesBackButton = false
     }
-    else {
+    else if(location.contains("notes")) {
       self.navigationItem.hidesBackButton = true
     }
   }

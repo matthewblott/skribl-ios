@@ -1,3 +1,4 @@
+import BridgeComponents
 import HotwireNative
 import UIKit
 import WebKit
@@ -7,20 +8,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    Hotwire.registerBridgeComponents([
-      ClearCanvasComponent.self,
-      CreateNoteComponent.self,
-      DeleteNoteComponent.self,
-      DeleteAccountComponent.self,
-      DownloadComponent.self,
-      PlaceholderComponent.self,
-      SendOtpComponent.self,
-      SignInComponent.self,
-      SignInSuccessComponent.self,
-      SignOutComponent.self,
-      ToastComponent.self,
-      ToggleSelectionComponent.self,
-    ])
+    Hotwire.registerBridgeComponents(
+      Bridgework.coreComponents + [
+        AuthenticatedComponent.self,
+        DownloadComponent.self,
+        UnauthenticatedComponent.self,
+      ]
+    )
     
     let localPathConfigURL = Bundle.main.url(forResource: "path-configuration", withExtension: "json")!
   
