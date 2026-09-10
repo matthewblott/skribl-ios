@@ -40,7 +40,7 @@
         "/auth/verify"
       ],
       "properties": {
-        "presentation": "replace_root"
+        "presentation": "default"
       }
     },
     {
