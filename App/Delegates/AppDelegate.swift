@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       Bridgework.coreComponents + [
         AuthenticatedComponent.self,
         DownloadComponent.self,
+        NoticeComponent.self,
         UnauthenticatedComponent.self,
       ]
     )
